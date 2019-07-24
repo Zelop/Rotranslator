@@ -1,0 +1,6 @@
+{
+	"token": "YOUR BOT PRIVATE KEY",
+	"azurekey": "YOUR AZURE TRANSLATOR API KEY",
+	"englishchannel": "ID OF YOUR ENGLISH CHANNEL",
+	"russianchannel": "IF OF YOUR RUSSIAN CHANNEL"
+}
