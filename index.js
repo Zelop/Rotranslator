@@ -33,11 +33,15 @@ function enToRu(message){
 		var resp = JSON.stringify(body, null, 4);
 		var abc = '"text": "'
 		var tmp = resp.split(abc);
-		var tpm = tmp[1].split('"');
+		var tpm = tmp[1].split('",');
 		console.log(util.inspect(tpm[0]));
+
+		var usernick = message.author.username;
+		if (message.member.nickname) usernick = message.member.nickname;
 		const niceEmbed = new Discord.RichEmbed()
 			.setColor('#0099ff')
-			.addField(`${message.author.tag}`, `${tpm[0]}`)
+			.setAuthor(usernick, message.author.avatarURL)
+			.setDescription(tpm[0])
 			.setTimestamp()
 			.setFooter('English? -> Russian');
 
@@ -66,7 +70,7 @@ function ruToEn (message){
 	};
 
 	request(optionsru, function(err, res, body){
-		//util.inspect(body);
+		//console.log(util.inspect(body));
 		if(err) {
 			console.log(err);
 			return;
@@ -74,11 +78,15 @@ function ruToEn (message){
 		var resp = JSON.stringify(body, null, 4);
 		var abc = '"text": "'
 		var tmp = resp.split(abc);
-		var tpm = tmp[1].split('"');
+		var tpm = tmp[1].split('",');
 		console.log(util.inspect(tpm[0]));
+
+		var usernick = message.author.username;
+		if (message.member.nickname) usernick = message.member.nickname;
 		const niceEmbed = new Discord.RichEmbed()
 			.setColor('#0099ff')
-			.addField(`${message.author.tag}`, `${tpm[0]}`)
+			.setAuthor(usernick, message.author.avatarURL)
+			.setDescription(tpm[0])
 			.setTimestamp()
 			.setFooter('Russian? -> English');
 
@@ -86,6 +94,7 @@ function ruToEn (message){
 	});
 
 }
+
 
 client.once('ready', () => {
 	console.log('Ready!');
