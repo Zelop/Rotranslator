@@ -1,6 +1,6 @@
 {
-	"token": "YOUR BOT PRIVATE KEY",
-	"azurekey": "YOUR AZURE TRANSLATOR API KEY",
-	"englishchannel": "ID OF YOUR ENGLISH CHANNEL",
-	"russianchannel": "ID OF YOUR RUSSIAN CHANNEL"
+	"token": "DISCORD BOT TOKEN HERE",
+	"azurekey": "AZURE API KEY HERE",
+	"channellist": ["CHANNEL1", "CHANNEL2", "CHANNEL3", "CHANNEL4"],
+	"languages": ["lang1", "lang2"]
 }
