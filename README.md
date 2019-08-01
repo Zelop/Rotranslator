@@ -1,12 +1,12 @@
 # Rotranslator
 Discord channel translator!
 
-Simple and full of bugs Discord bot that uses Microsoft's Azure API to translate between two Discord channels.
+Simple and full of bugs Discord bot that uses Yandex API to translate between two Discord channels.
 
 # Installation
 
 Clone it..
-`git clone https://github.com/Zelop/Rotranslator/`
+`git clone -b yandex https://github.com/Zelop/Rotranslator/`
 
 Install dependencies..
 `npm install`
@@ -19,7 +19,7 @@ You have to add the desired channels (Channel ID) to translate from/to to "chann
 ```
 {
 	"token": "DISCORD BOT TOKEN HERE",
-	"azurekey": "AZURE API KEY HERE",
+	"key": "YANDEX API KEY HERE",
 	"channellist": ["12345", "67890", "1111", "3333"],
 	"languages": ["ru", "en", "es", "fr"]
 }
@@ -37,3 +37,6 @@ Easy.
 
 # More than one language
 If you want to translate to different languages/channel, you'll have to comment out the "return;" inside the for loop, and write the origin channel again for each new translation. (Or you could just write a better bot :))
+
+# About
+Bot is meant to be Powered by Yandex.Translate ( http://translate.yandex.com/ ), message shown after every translation according to yandex terms https://tech.yandex.com/translate/doc/dg/concepts/design-requirements-docpage/
