@@ -7,17 +7,29 @@ const util = require('util');
 
 function isOdd(num) { return (num % 2);}
 
-function translateMsg(message, lang, channel){
+async function sendAttachments(attach, chan, nickname) {
+	client.channels.get(chan).send("Attachment by " + nickname + ": " + attach);
+}
+
+async function translateMsg(message, lang, channel){
+	var usernick = message.author.username;
+	if (message.member.nickname) usernick = message.member.nickname;
+
+	if (message.attachments.first()) {
+    console.log(message.attachments.first().url);
+    var attachUrl = message.attachments.first().url;
+    sendAttachments(attachUrl, channel, usernick);
+  }
+	if (message == "") return;
 	var translate = require('yandex-translate')(config.key);
 	translate.translate(message.content, { to: lang }, function(err, res) {
 		if(err) {
 			console.log(err);
 			return;
 		}
-		console.log(res.text);
-		var usernick = message.author.username;
+
 		var tltedmsg = res.text + "\n\nPowered by Yandex.Translate http://translate.yandex.com/"
-		if (message.member.nickname) usernick = message.member.nickname;
+
 		const niceEmbed = new Discord.RichEmbed()
 			.setColor('#0099ff')
 			.setAuthor(usernick, message.author.avatarURL)
@@ -26,7 +38,6 @@ function translateMsg(message, lang, channel){
 			.setFooter(`Translated to ${lang}`);
 
 		client.channels.get(channel).send(niceEmbed);
-	console.log(res.text);
 	});
 }
 
@@ -47,7 +58,7 @@ client.on('message', message => {
 				var z = i;
 				if (isOdd(i)) {	z--; } else z++;
 				translateMsg(message, config.languages[i], config.channellist[z]);
-				return;	// No need to stay on the loop
+				return; // No need to stay on the loop
 		}
 	}
 });
